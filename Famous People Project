@@ -1,0 +1,67 @@
+/* Create table about the people and what they do here */
+CREATE TABLE people (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER);
+
+INSERT INTO people (fullname, age) VALUES ("Oprah Winfrey", 69);
+INSERT INTO people (fullname, age) VALUES ("Tiger Woods", 47);
+INSERT INTO people (fullname, age) VALUES ("Angelina Jolie", 47);
+INSERT INTO people (fullname, age) VALUES ("Beyonce Knowles", 41);
+INSERT INTO people (fullname, age) VALUES ("David Beckham", 47);
+INSERT INTO people (fullname, age) VALUES ("Johnny Depp", 59);
+INSERT INTO people (fullname, age) VALUES ("J.K. Rowling", 57);
+INSERT INTO people (fullname, age) VALUES ("Brad Pitt", 59);
+INSERT INTO people (fullname, age) VALUES ("Will Smith", 54);
+INSERT INTO people (fullname, age) VALUES ("Justin Timberlake", 42);
+INSERT INTO people (fullname, age) VALUES ("Steven Spielberg", 76);
+INSERT INTO people (fullname, age) VALUES ("Cameron Diaz", 50);
+INSERT INTO people (fullname, age) VALUES ("Madonna", 64);
+INSERT INTO people (fullname, age) VALUES ("Alex Rodriguez", 47);
+INSERT INTO people (fullname, age) VALUES ("Kanye West", 45);
+INSERT INTO people (fullname, age) VALUES ("Stephen King", 75);
+INSERT INTO people (fullname, age) VALUES ("Miley Cyrus", 30);
+INSERT INTO people (fullname, age) VALUES ("Jeff Gordon", 51);
+INSERT INTO people (fullname, age) VALUES ("Leonardo DiCaprio", 48);
+
+CREATE TABLE hobbies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    people_id INTEGER,
+    hobby_name TEXT,
+    years_practiced INTEGER);
+    
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("reading", 10);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("fishing", 12);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("tattoos", 19);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("reading", 6);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("tattoos", 8);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("golfing", 9);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("reading", 18);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("design", 10);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("fishing", 4);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("gaming", 6);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("aliens", 20);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("snowboarding", 21);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("reading", 13);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("golfing", 13);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("design", 11);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("aliens", 10);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("dancing", 12);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("gaming", 8);
+INSERT INTO hobbies (hobby_name, years_practiced) VALUES ("gaming", 11);
+
+--What hobbies do these famous people have?
+
+SELECT people.fullname, hobbies.hobby_name
+FROM people
+JOIN hobbies
+ON people.id = hobbies.id;
+
+--Sorts the famous people by their hobby and number of years practiced.
+
+SELECT people.fullname, hobbies.hobby_name, hobbies.years_practiced
+FROM people
+JOIN hobbies
+ON people.id = hobbies.id
+GROUP BY fullname
+ORDER BY hobby_name, years_practiced DESC;
