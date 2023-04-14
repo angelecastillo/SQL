@@ -16,10 +16,8 @@ AND Product = 'iPhone';
 #3. Select the customer account numbers for all the orders that were placed in February.
 SELECT DISTINCT acctnum
 FROM BIT_DB.customers
-
 LEFT JOIN BIT_DB.FebSales
 ON customers.order_id = FebSales.orderID
-
 WHERE length(orderid) = 6 
 AND orderid <> 'Order ID';
 
